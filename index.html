@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Little Something for You 💜</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    font-family: Georgia, serif;
+    color: white;
+
+    background: #24002f;
+}
+
+
+/* =========================
+   PAGES
+========================= */
+
+.page {
+    position: absolute;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(1.08);
+
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s ease,
+        visibility 0.9s;
+
+    overflow: hidden;
+}
+
+.page.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+
+/* =========================
+   DIFFERENT BACKGROUNDS
+========================= */
+
+#page1 {
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            #76248e,
+            #25002f 75%
+        );
+}
+
+#page2 {
+    background:
+        radial-gradient(
+            circle at 30% 15%,
+            #b12b91,
+            #5a086e 45%,
+            #210027 100%
+        );
+}
+
+#page3 {
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            #8529a9,
+            #360044 55%,
+            #130018 100%
+        );
+}
+
+#page4 {
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #a22b9e,
+            #3a0048 65%,
+            #16001e 100%
+        );
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+    width: 92%;
+    max-width: 500px;
+
+    max-height: 88vh;
+
+    padding: 38px 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.08);
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    border-radius: 30px;
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 0 40px rgba(220,80,255,0.25),
+        inset 0 0 30px rgba(255,255,255,0.03);
+
+    position: relative;
+
+    z-index: 20;
+
+    overflow-y: auto;
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+h1 {
+    font-size: 37px;
+
+    color: #ffd9ff;
+
+    text-shadow:
+        0 0 10px #ff69b4,
+        0 0 25px #b026ff;
+
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 29px;
+
+    color: #ffd5ff;
+
+    text-shadow:
+        0 0 10px #ff69b4;
+
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+
+    line-height: 1.75;
+
+    color: #f8ddff;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+button {
+    margin-top: 30px;
+
+    padding: 15px 30px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #9225c7,
+            #e52de8,
+            #ff69b4
+        );
+
+    color: white;
+
+    font-size: 17px;
+
+    font-family: Georgia, serif;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(255,105,180,0.5);
+
+    transition: all 0.3s ease;
+
+    flex-shrink: 0;
+}
+
+button:hover {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 30px rgba(255,105,180,0.9);
+}
+
+button:active {
+    transform: scale(0.94);
+}
+
+
+/* =========================
+   FLOATING FLOWERS
+========================= */
+
+.flower {
+    position: fixed;
+
+    z-index: 5;
+
+    pointer-events: none;
+
+    font-size: 30px;
+
+    animation:
+        floatFlower 7s ease-in-out infinite;
+}
+
+.f1 {
+    left: 5%;
+    top: 12%;
+}
+
+.f2 {
+    right: 7%;
+    top: 18%;
+    animation-delay: 1.5s;
+}
+
+.f3 {
+    left: 8%;
+    top: 68%;
+    animation-delay: 3s;
+}
+
+.f4 {
+    right: 8%;
+    top: 70%;
+    animation-delay: 4s;
+}
+
+.f5 {
+    left: 45%;
+    top: 5%;
+    animation-delay: 2s;
+}
+
+.f6 {
+    left: 25%;
+    top: 38%;
+    animation-delay: 5s;
+}
+
+.f7 {
+    right: 25%;
+    top: 45%;
+    animation-delay: 3.5s;
+}
+
+@keyframes floatFlower {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(-5deg);
+
+        opacity: 0.7;
+    }
+
+    50% {
+        transform:
+            translateY(-45px)
+            rotate(15deg);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(0)
+            rotate(-5deg);
+
+        opacity: 0.7;
+    }
+}
+
+
+/* =========================
+   GROWING FLOWERS
+========================= */
+
+.garden {
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 110px;
+
+    z-index: 10;
+
+    pointer-events: none;
+}
+
+.growing {
+    position: absolute;
+
+    bottom: 0;
+
+    font-size: 42px;
+
+    transform-origin: bottom;
+
+    animation:
+        growFlower 3s ease-in-out infinite;
+}
+
+.g1 {
+    left: 3%;
+}
+
+.g2 {
+    left: 20%;
+    animation-delay: .6s;
+}
+
+.g3 {
+    left: 40%;
+    animation-delay: 1.2s;
+}
+
+.g4 {
+    left: 60%;
+    animation-delay: .3s;
+}
+
+.g5 {
+    left: 80%;
+    animation-delay: 1.7s;
+}
+
+@keyframes growFlower {
+
+    0%, 100% {
+        transform:
+            scale(0.25)
+            translateY(30px);
+
+        opacity: 0.4;
+    }
+
+    50% {
+        transform:
+            scale(1)
+            translateY(0);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================
+   SPARKLES
+========================= */
+
+.sparkle {
+    position: fixed;
+
+    z-index: 6;
+
+    color: #ffe1ff;
+
+    font-size: 21px;
+
+    animation:
+        sparkleMove 2s ease-in-out infinite alternate;
+}
+
+.s1 {
+    left: 25%;
+    top: 20%;
+}
+
+.s2 {
+    right: 25%;
+    top: 30%;
+}
+
+.s3 {
+    left: 35%;
+    bottom: 25%;
+}
+
+.s4 {
+    right: 10%;
+    bottom: 35%;
+}
+
+.s5 {
+    left: 10%;
+    bottom: 25%;
+}
+
+@keyframes sparkleMove {
+
+    from {
+        opacity: 0.2;
+        transform: scale(0.6);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.4);
+    }
+}
+
+
+/* =========================
+   BIG FLOWERS
+========================= */
+
+.big-flower {
+    font-size: 75px;
+
+    margin-bottom: 15px;
+
+    animation:
+        flowerPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes flowerPulse {
+
+    from {
+        transform:
+            scale(0.9)
+            rotate(-5deg);
+
+        filter:
+            drop-shadow(0 0 5px #ff69b4);
+    }
+
+    to {
+        transform:
+            scale(1.1)
+            rotate(5deg);
+
+        filter:
+            drop-shadow(0 0 25px #e040fb);
+    }
+}
+
+
+/* =========================
+   FINAL PAGE
+========================= */
+
+.final-flower {
+    font-size: 85px;
+
+    animation:
+        finalBloom 2s ease-in-out infinite alternate;
+}
+
+@keyframes finalBloom {
+
+    from {
+        transform: scale(.9);
+        filter: drop-shadow(0 0 5px #ff69b4);
+    }
+
+    to {
+        transform: scale(1.15);
+        filter: drop-shadow(0 0 35px #ff69b4);
+    }
+}
+
+
+/* =========================
+   HEARTS
+========================= */
+
+.heart {
+    position: fixed;
+
+    z-index: 4;
+
+    font-size: 22px;
+
+    animation:
+        heartFloat 5s ease-in-out infinite;
+}
+
+.h1 {
+    left: 15%;
+    top: 25%;
+}
+
+.h2 {
+    right: 15%;
+    top: 55%;
+}
+
+.h3 {
+    left: 75%;
+    bottom: 15%;
+}
+
+@keyframes heartFloat {
+
+    0% {
+        transform: translateY(0);
+        opacity: .4;
+    }
+
+    50% {
+        transform: translateY(-30px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: .4;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =================================
+     FLOATING FLOWERS
+================================= -->
+
+<div class="flower f1">🌸</div>
+<div class="flower f2">🌺</div>
+<div class="flower f3">🌷</div>
+<div class="flower f4">🌸</div>
+<div class="flower f5">🌺</div>
+<div class="flower f6">🌷</div>
+<div class="flower f7">🌸</div>
+
+
+<!-- SPARKLES -->
+
+<div class="sparkle s1">✦</div>
+<div class="sparkle s2">✧</div>
+<div class="sparkle s3">✦</div>
+<div class="sparkle s4">✧</div>
+<div class="sparkle s5">✦</div>
+
+
+<!-- HEARTS -->
+
+<div class="heart h1">💜</div>
+<div class="heart h2">💗</div>
+<div class="heart h3">💜</div>
+
+
+<!-- =================================
+     PAGE 1
+================================= -->
+
+<section id="page1" class="page active">
+
+    <div class="card">
+
+        <h1>
+            A garden for my purple flower🫵
+        </h1>
+
+        <p>
+            Lately, I find myself thinking about you more often than I expected. Somehow, even on ordinary days, something always reminds me of you.
+            <br><br>
+            Your smile, the little moments I see you around campus, and even the times I don't see you somehow stay in my mind.
+            <br><br>
+
+            Just a small thing I made
+            because I wanted to make
+            you smile. 🌷
+        </p>
+
+        <button onclick="showPage('page2')">
+            Open It 💜
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     PAGE 2
+================================= -->
+
+<section id="page2" class="page">
+
+    <div class="card">
+
+        <div class="big-flower">
+            🌺
+        </div>
+
+        <h2>
+            Why a Garden? 🌸
+        </h2>
+
+        <p>
+            I've always thought flowers
+            were beautiful because they
+            don't all bloom at the same time.
+            <br><br>
+
+            Some grow quickly,
+            some take their time,
+            and some bloom when you
+            least expect it.
+            <br><br>
+
+            I guess that's what made me
+            think of you.
+            <br><br>
+
+            There's just something about
+            your smile that stayed in
+            my mind. 🌷
+        </p>
+
+        <button onclick="showPage('page3')">
+            One Last Thing... 🌺
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     PAGE 3
+================================= -->
+
+<section id="page3" class="page">
+
+    <div class="card">
+
+        <div class="big-flower">
+            🌸
+        </div>
+
+        <h2>
+            For You 💜
+        </h2>
+
+        <p>
+            I don't know where this
+            little story is supposed to go,
+            and I'm not asking you to
+            figure that out either.
+            <br><br>
+
+            I just wanted you to know
+            that meeting you, even from
+            a distance, became one of
+            those little things that made
+            my days more interesting.
+            <br><br>
+
+            Your smile caught my attention
+            first, but getting to know even
+            a little about you made me
+            appreciate you more.
+        </p>
+
+        <button onclick="showPage('page4')">
+            There's One More 🌷
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     PAGE 4
+================================= -->
+
+<section id="page4" class="page">
+
+    <div class="card">
+
+        <div class="final-flower">
+            🌷
+        </div>
+
+        <h2>
+            Just This 💗
+        </h2>
+
+        <p>
+            So here's a little garden
+            of flowers that can't say
+            anything for me.
+            <br><br>
+
+            I hope they can at least
+            make you smile. 🌸
+            <br><br>
+
+            That's all.
+            <br><br>
+
+            I just wanted to give you
+            something beautiful. 💜
+        </p>
+
+        <button onclick="showPage('page1')">
+            Back to the Garden 🌺
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     GROWING FLOWERS
+================================= -->
+
+<div class="garden">
+
+    <div class="growing g1">🌷</div>
+    <div class="growing g2">🌸</div>
+    <div class="growing g3">🌺</div>
+    <div class="growing g4">🌷</div>
+    <div class="growing g5">🌸</div>
+
+</div>
+
+
+<!-- =================================
+     JAVASCRIPT
+================================= -->
+
+<script>
+
+function showPage(pageID) {
+
+    document.querySelectorAll(".page").forEach(function(page) {
+        page.classList.remove("active");
+    });
+
+    document.getElementById(pageID).classList.add("active");
+
+}
+
+</script>
+
+</body>
+</html>
